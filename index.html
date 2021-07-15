@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S-Chat Bot</title>
+</head>
+<body oncontextmenu="return false">
+    <center><textarea id='textarea'></textarea></center>
+    <center><input type='text' id='input' placeholder="Enter Command..."><button id='send' onclick='check()'> OK </button></center>
+</body>
+<style>
+    #textarea{
+        resize: none;
+        width: 90%;
+        border-radius: 13px;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 25px;
+        height: 90vh;
+        transition: all 0.50s linear;
+        cursor: url('images/cursor.png'), default;
+        background-color: white;
+    }
+    #textarea:hover{
+        border-color: grey;
+    }
+    #textarea::selection{
+        background-color: lightgreen;
+    }
+    #textarea::-moz-selection{
+        background-color: lightgreen;
+    }
+    #input{
+        border-radius: 50px;
+        outline: none;
+        border: 2px solid;
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 25px;
+        width: 85%;
+        transition: all 0.50s linear;
+        border-color: darkgrey;
+        cursor: url('images/text.png'), default;
+    }
+    #input:hover{
+        border-color: grey;
+    }
+    #input::selection{
+        background-color: yellow;
+    }
+    #input::-moz-selection{
+        background-color: yellow;      
+    }
+    #send{
+        text-align: center;
+        outline: none;
+        border-radius: 50px;
+        font-size: 25px;
+        transition: all 0.50s linear;
+        border-color: darkgrey;
+        background-color: lightgrey;
+        cursor: url('images/cursor.png'), default;
+    }
+    #send:hover{
+        background-color: darkgrey;
+        border-color: lightgrey;
+        color: white;
+    }
+    html, body{
+        background-color: skyblue;
+        cursor: url('images/cursor.png'), default;
+    }
+</style>
+<script>
+textarea=document.getElementById('textarea');
+text=document.getElementById('input');
+textarea.disabled=true;
+function insert(text){
+    textarea.disabled=false;
+    textarea.innerHTML+=('You: '+document.getElementById('input').value+';\n'+'Bot: '+text+'\n\n');
+    textarea.disabled=true;
+    document.getElementById('input').value='';
+}
+function ext(){
+    self.close()
+}
+function check(){
+  var x=text.value.toLowerCase();
+  if (!x.replace(/\s/g, '').length) {
+  }
+  else{
+    if (x.includes('hi')==true){
+        insert('Hi There!');
+    }
+    else if ((x.includes('text view')==true) || (x.includes('textview')==true)){
+        insert("Text View Is A Simple Text Editor Built In Python!");
+    }
+    else if ((x.includes('eye apple')==true) || (x.includes('eyeapple')==true)){
+        insert('Eye Apple Is A Simple Game Built in Scratch And it is Real Fun To Play!');
+    }
+    else if (x.includes('who')==true && x.includes('you')==true){
+        insert("I Am sancho1952007's 24x7 AI Chatbot... If You Don't Mind, What's You Name?");
+    }
+    else if (x.includes('ok')==true){
+        insert('No Problem :)')
+    }
+    else if ((x.includes('thanks')==true) || (x.includes('thank you')==true) || (x.includes('thank')==true)){
+        insert('Your Most Welcome 😊;')
+    }
+    else if (x.includes('qr') && x.includes('code') || x.includes('qrcode')){
+        insert('Qr Code Maker is Built In Python To Make Qr Codes...')
+    }
+    else if ((x.includes('good')==true)&&x.includes('you')==true || x.includes('you are good')==true || x.includes("your'e good")){
+        insert('Thank You For Telling Me Good 🙂 Also Thanks to Sancho to develop Me!')
+    }
+    else if (x.includes('my')==true && x.includes('name')==true){
+        insert('Wow, What A Nice Name!')
+    }
+    else if (x.includes('modern')==true && x.includes('gui')==true){
+        insert('Modern Gui Is a GUI Design Built For A Higher Level GUI Framework in Python Tkinter.')
+    }
+    else if (x.includes('my')==true && x.includes('os')==true || x.includes('platform')){
+        insert('Your Using ' + navigator.platform + " Platform.")
+    }
+    else if (x.includes('bye')==true){
+        insert('Good Bye.....');
+        alert('Press Ok To Exit...')
+        setTimeout(ext, 3000)
+    }
+    else{
+        insert("Sorry, I Don't Know That :(");
+    }
+}
+}
+
+document.addEventListener("keydown", function(){
+    var x=event.keycode || event.which;
+    if (x == 13){
+         check()
+    }
+});
+
+</script>
+
+<script src='scripts/Block_Keys.js'></script>
+
+</html>
